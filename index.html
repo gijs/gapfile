@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one
+ or more contributor license agreements.  See the NOTICE file
+ distributed with this work for additional information
+ regarding copyright ownership.  The ASF licenses this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License.  You may obtain a copy of the License at
+ 
+ http://www.apache.org/licenses/LICENSE-2.0
+ 
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied.  See the License for the
+ specific language governing permissions and limitations
+ under the License.
+ -->
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <title>Hello World</title>
+    </head>
+    <body>
+        <div class="app">
+            <button onclick="testWrite();">Test file write</button>
+            <button onclick="testRead();">Test file read</button>
+            <button onclick="testDirectory();">Test directory</button>
+            <button onclick="testExists();">Test file existence</button>
+            <button onclick="testRootDir();">Display root directory</button>
+            <button onclick="testDataURI();">Test data URI</button>
+            <button onclick="testAppend();">Test append</button>
+            <button onclick="testDelete();">Test file delete</button>
+        </div>
+        <script type="text/javascript" src="cordova-2.7.0.js"></script>
+        <script type="text/javascript" src="gapfile.js"></script>
+        <script type="text/javascript">
+            var userfilename = "gapfiletest.txt";
+            var userdir = "/"; // Default for iOS
+            document.addEventListener('deviceready', onDeviceReady, false);
+            
+            function onDeviceReady(){
+                if(device.platform == "Android"){
+                    userdir = "/sdcard/"; // Can't write to root on Android.
+                }
+                // Insert code here to set proper directory for devices other than iOS or Android.
+                navigator.notification.alert("Ready to run tests!");
+                
+            }
+            
+            function testWrite(){
+                gapFile.writeFile(userdir + userfilename,"Hello, world!\n",writeDone,writeFail);
+            }
+            
+            function testRead(){
+                // If the second parameter is true, return file contents rather
+                // than data URI.
+                gapFile.readFile(userdir + userfilename,true,readDone,readFail);
+            }
+            
+            function testAppend(){
+                 gapFile.appendFile(userdir + userfilename,"MOAR TEXT FOR THE WRITING!\n",appendDone,appendFail);
+            }
+            
+            function testDelete(){
+                gapFile.deleteFile(userdir + userfilename,deleteDone,deleteFail);
+            }
+            
+            function testExists(){
+                gapFile.fileExists(userdir + userfilename,existsDone,existsFail);
+            }
+            
+            function testDirectory(){
+                gapFile.readDirectory(userdir,displayDirectory,dirFail);
+            }
+            
+            function testRootDir(){
+                gapFile.getRootDir(rootDirSuccess,rootDirFail);
+            }
+            
+            function testDataURI(){
+                // If the second parameter is false, return data URI rather
+                // than file contents.
+                gapFile.readFile(userdir + userfilename,false,dataURIDone,dataURIFail);
+            }
+            
+           
+            function dataURIDone(uri){
+                navigator.notification.alert("Data URI is: " + uri,nop);
+            }
+            
+            function dataURIFail(){
+                navigator.notification.alert("Failed to retrieve data URI",nop);
+            }
+            
+            function rootDirSuccess(dirname){
+                navigator.notification.alert("Root directory is: " + dirname,nop);
+            }
+            function rootDirFail(){
+                navigator.notification.alert("Can't get root directory",nop);
+            }
+            function displayDirectory(dirarr){
+                navigator.notification.alert(JSON.stringify(dirarr),nop);
+            }
+            function dirFail(){
+                navigator.notification.alert("Error reading directory",nop);
+            }
+            
+            function writeDone(){
+                navigator.notification.alert("Write successful.",nop);
+            }
+            function writeFail(){
+                navigator.notification.alert("Error writing file",nop);
+            }
+            
+            function appendDone(){
+                navigator.notification.alert("Append successful.",nop);
+            }
+            function appendFail(){
+                navigator.notification.alert("Error appending to file",nop);
+            }
+            
+            function readDone(text){
+                navigator.notification.alert("Read successful. Text was " + text,nop);
+            }
+            function readFail(){
+                navigator.notification.alert("Error reading file",nop);
+            }
+            function existsDone(exists){
+                navigator.notification.alert("File exists: " + exists,nop);
+            }
+            function existsFail(){
+                navigator.notification.alert("Error checking for file existence",nop);
+            }
+            function deleteDone(){
+                navigator.notification.alert("Delete successful.",nop);
+            }
+            function deleteFail(){
+                navigator.notification.alert("Error deleting file",nop);
+            }
+            function nop(){
+                // In "real life" you'd replace this with a function to actually do something after
+                // carrying out the specified action.
+            }
+            </script>
+    </body>
+</html>
+
