@@ -38,7 +38,7 @@ Parameters:
 
  *fullpath*: full path including file name (if no path portion is given, assumes /).
 
-	Examples: test.txt /test.txt /some/folder/test.txt (note that iOS doesn't allow subdirectories at this time).
+	Examples: test.txt /test.txt /some/folder/test.txt
 
  *data*: the data to write.
 
@@ -60,7 +60,7 @@ Parameters:
 
  *fullpath*: full path including file name (if no path portion is given, assumes /).
 
-     Examples: test.txt /test.txt /some/folder/test.txt (note that iOS doesn't allow subdirectories at this time).
+     Examples: test.txt /test.txt /some/folder/test.txt 
 
  *asText*: boolean specifying whether to read as text or a data URI. If true, calls success with the text as the parameter. If false, calls success with the data URI as the parameter.
 
@@ -77,7 +77,7 @@ Parameters:
 
  *fullpath*: full path of file to delete, including file name (if no path portion is given, assumes /).
 
-     Examples: test.txt /test.txt /some/folder/test.txt (note that iOS doesn't allow subdirectories at this time).
+     Examples: test.txt /test.txt /some/folder/test.txt 
 
  *success*: callback function on successful delete.
 
