@@ -116,7 +116,9 @@ Delete a subdirectory.
 
 Parameters: 
  *dirName*: full path to directory
+
  *success*: callback function for successful delete.
+
  *fail*: callback function if error occurs.
 
 
