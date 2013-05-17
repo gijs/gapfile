@@ -1,172 +1,172 @@
 <!DOCTYPE html>
 <!--
- Copyright 2013, Contraterrene eLearning Group, LLC
-  Licensed under the Apache License, Version 2.0 (the "License");
-  you may not use this file except in compliance with the License.
-  You may obtain a copy of the License at
+Copyright 2013, Contraterrene eLearning Group, LLC
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
 
-      http://www.apache.org/licenses/LICENSE-2.0
+http://www.apache.org/licenses/LICENSE-2.0
 
-  Unless required by applicable law or agreed to in writing, software
-  distributed under the License is distributed on an "AS IS" BASIS,
-  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  See the License for the specific language governing permissions and
-  limitations under the License.
- -->
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
 
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Test driver for gapfile.js</title>
-    </head>
-    <body>
-        <div>
-            <button onclick="testWrite();">Write file</button>
-            <button onclick="testRead();">Read file</button>
-			<button onclick="testDataURI();">Read file as data URI</button>
-            <button onclick="testDirectory();">Read directory</button>
-            <button onclick="testExists();">Test file existence</button>
-            <button onclick="testAppend();">Append to file</button>
-            <button onclick="testDelete();">Delete file</button>
- 			<button onclick="testDirectoryCreate();">Create subdirectory</button>
-			<button onclick="testWriteSubdirectory();">Write file in subdirectory</button>
-			<button onclick="testDeleteSubdirectory();">Delete file in subdirectory</button>
-			<button onclick="testDirectoryDelete();">Delete subdirectory</button>
-        </div>
-        <script type="text/javascript" src="cordova-2.7.0.js"></script>
-        <script type="text/javascript" src="gapfile.js"></script>
-        <script type="text/javascript">
-            var userfilename = "gftest.txt";
-			var usersubfilename = "gfsubdirtest.txt";
-            var userdir = "/"; // Default for iOS
-			var usersubdir = "gftestdir";
-            document.addEventListener('deviceready', onDeviceReady, false);
-            
-            function onDeviceReady(){
-                if(device.platform == "Android"){
-                    userdir = "/sdcard/"; // Can't write to root on Android.
-                }
-                // Insert code here to set proper directory for devices other than iOS or Android.
-                navigator.notification.alert("Ready to run tests!");
-                
-            }
-            
-            function testWrite(){
-                gapFile.writeFile(userdir + userfilename,"Hello, world!\n",writeDone,writeFail);
-            }
-            
-			function testWriteSubdirectory(){
-                gapFile.writeFile(userdir + usersubdir + "/" + usersubfilename,"Hello, subdirectory!\n",writeDone,writeFail);
-            }
+<head>
+	<meta charset="utf-8" />
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+	<link rel="stylesheet" type="text/css" href="css/index.css" />
+	<title>Test driver for gapfile.js</title>
+</head>
+<body>
+	<div>
+		<button onclick="testWrite();">Write file</button>
+		<button onclick="testRead();">Read file</button>
+		<button onclick="testDataURI();">Read file as data URI</button>
+		<button onclick="testDirectory();">Read directory</button>
+		<button onclick="testExists();">Test file existence</button>
+		<button onclick="testAppend();">Append to file</button>
+		<button onclick="testDelete();">Delete file</button>
+		<button onclick="testDirectoryCreate();">Create subdirectory</button>
+		<button onclick="testWriteSubdirectory();">Write file in subdirectory</button>
+		<button onclick="testDeleteSubdirectory();">Delete file in subdirectory</button>
+		<button onclick="testDirectoryDelete();">Delete subdirectory</button>
+	</div>
+	<script type="text/javascript" src="cordova-2.7.0.js"></script>
+	<script type="text/javascript" src="gapfile.js"></script>
+	<script type="text/javascript">
+	var userfilename = "gftest.txt";
+	var usersubfilename = "gfsubdirtest.txt";
+	var userdir = "/"; // Default for iOS
+	var usersubdir = "gftestdir";
+	document.addEventListener('deviceready', onDeviceReady, false);
 
-			function testDeleteSubdirectory(){
-	            gapFile.deleteFile(userdir +  usersubdir + "/" + usersubfilename,deleteDone,deleteFail);
-	        }
-            function testRead(){
-                // If the second parameter is true, return file contents rather
-                // than data URI.
-                gapFile.readFile(userdir + userfilename,true,readDone,readFail);
-            }
-            
-            function testAppend(){
-                 gapFile.appendFile(userdir + userfilename,"MOAR TEXT FOR THE WRITING!\n",appendDone,appendFail);
-            }
-            
-            function testDelete(){
-                gapFile.deleteFile(userdir + userfilename,deleteDone,deleteFail);
-            }
-            
-            function testExists(){
-                gapFile.fileExists(userdir + userfilename,existsDone,existsFail);
-            }
-            
-            function testDirectory(){
-                gapFile.readDirectory(userdir,displayDirectory,dirFail);
-            }
-            
-            function testDataURI(){
-                // If the second parameter is false, return data URI rather
-                // than file contents.
-                gapFile.readFile(userdir + userfilename,false,dataURIDone,dataURIFail);
-            }
-            
-			function testDirectoryCreate(){
-				gapFile.mkDirectory(userdir + usersubdir,mkDirectoryDone,mkDirectoryFail);
-			}
-			
-			function testDirectoryDelete(){
-				gapFile.rmDirectory(userdir + usersubdir,rmDirectoryDone,rmDirectoryFail);
-			}
-			
-			
-			function rmDirectoryDone(){
-	              navigator.notification.alert("Directory removed.",nop);
-	        }
+	function onDeviceReady(){
+		if(device.platform == "Android"){
+			userdir = "/sdcard/"; // Can't write to root on Android.
+		}
+		// Insert code here to set proper directory for devices other than iOS or Android.
+		navigator.notification.alert("Ready to run tests!");
 
-	        function rmDirectoryFail(){
-	        	navigator.notification.alert("Failed to remove directory.",nop);
-	        }
-			function mkDirectoryDone(){
-	              navigator.notification.alert("Directory created.",nop);
-	        }
+	}
 
-	        function mkDirectoryFail(){
-	        	navigator.notification.alert("Failed to create directory.",nop);
-	        }
-            function dataURIDone(uri){
-                navigator.notification.alert("Data URI is: " + uri,nop);
-            }
-            
-            function dataURIFail(){
-                navigator.notification.alert("Failed to retrieve data URI.",nop);
-            }
-            
-            function displayDirectory(dirarr){
-                navigator.notification.alert(JSON.stringify(dirarr),nop);
-            }
-            function dirFail(){
-                navigator.notification.alert("Error reading directory.",nop);
-            }
-            
-            function writeDone(){
-                navigator.notification.alert("Write successful.",nop);
-            }
-            function writeFail(){
-                navigator.notification.alert("Error writing file",nop);
-            }
-            
-            function appendDone(){
-                navigator.notification.alert("Append successful.",nop);
-            }
-            function appendFail(){
-                navigator.notification.alert("Error appending to file",nop);
-            }
-            
-            function readDone(text){
-                navigator.notification.alert("Read successful. Text was " + text,nop);
-            }
-            function readFail(){
-                navigator.notification.alert("Error reading file.",nop);
-            }
-            function existsDone(exists){
-                navigator.notification.alert("File exists: " + exists,nop);
-            }
-            function existsFail(){
-                navigator.notification.alert("Error checking for file existence.",nop);
-            }
-            function deleteDone(){
-                navigator.notification.alert("Delete successful.",nop);
-            }
-            function deleteFail(){
-                navigator.notification.alert("Error deleting file.",nop);
-            }
-            function nop(){
-                // In "real life" you'd probably want something here. 
-            }
-            </script>
-    </body>
+	function testWrite(){
+		gapFile.writeFile(userdir + userfilename,"Hello, world!\n",writeDone,writeFail);
+	}
+
+	function testWriteSubdirectory(){
+		gapFile.writeFile(userdir + usersubdir + "/" + usersubfilename,"Hello, subdirectory!\n",writeDone,writeFail);
+	}
+
+	function testDeleteSubdirectory(){
+		gapFile.deleteFile(userdir +  usersubdir + "/" + usersubfilename,deleteDone,deleteFail);
+	}
+	function testRead(){
+		// If the second parameter is true, return file contents rather
+		// than data URI.
+		gapFile.readFile(userdir + userfilename,true,readDone,readFail);
+	}
+
+	function testAppend(){
+		gapFile.appendFile(userdir + userfilename,"MOAR TEXT FOR THE WRITING!\n",appendDone,appendFail);
+	}
+
+	function testDelete(){
+		gapFile.deleteFile(userdir + userfilename,deleteDone,deleteFail);
+	}
+
+	function testExists(){
+		gapFile.fileExists(userdir + userfilename,existsDone,existsFail);
+	}
+
+	function testDirectory(){
+		gapFile.readDirectory(userdir,displayDirectory,dirFail);
+	}
+
+	function testDataURI(){
+		// If the second parameter is false, return data URI rather
+		// than file contents.
+		gapFile.readFile(userdir + userfilename,false,dataURIDone,dataURIFail);
+	}
+
+	function testDirectoryCreate(){
+		gapFile.mkDirectory(userdir + usersubdir,mkDirectoryDone,mkDirectoryFail);
+	}
+
+	function testDirectoryDelete(){
+		gapFile.rmDirectory(userdir + usersubdir,rmDirectoryDone,rmDirectoryFail);
+	}
+
+
+	function rmDirectoryDone(){
+		navigator.notification.alert("Directory removed.",nop);
+	}
+
+	function rmDirectoryFail(){
+		navigator.notification.alert("Failed to remove directory.",nop);
+	}
+	function mkDirectoryDone(){
+		navigator.notification.alert("Directory created.",nop);
+	}
+
+	function mkDirectoryFail(){
+		navigator.notification.alert("Failed to create directory.",nop);
+	}
+	function dataURIDone(uri){
+		navigator.notification.alert("Data URI is: " + uri,nop);
+	}
+
+	function dataURIFail(){
+		navigator.notification.alert("Failed to retrieve data URI.",nop);
+	}
+
+	function displayDirectory(dirarr){
+		navigator.notification.alert(JSON.stringify(dirarr),nop);
+	}
+	function dirFail(){
+		navigator.notification.alert("Error reading directory.",nop);
+	}
+
+	function writeDone(){
+		navigator.notification.alert("Write successful.",nop);
+	}
+	function writeFail(){
+		navigator.notification.alert("Error writing file",nop);
+	}
+
+	function appendDone(){
+		navigator.notification.alert("Append successful.",nop);
+	}
+	function appendFail(){
+		navigator.notification.alert("Error appending to file",nop);
+	}
+
+	function readDone(text){
+		navigator.notification.alert("Read successful. Text was " + text,nop);
+	}
+	function readFail(){
+		navigator.notification.alert("Error reading file.",nop);
+	}
+	function existsDone(exists){
+		navigator.notification.alert("File exists: " + exists,nop);
+	}
+	function existsFail(){
+		navigator.notification.alert("Error checking for file existence.",nop);
+	}
+	function deleteDone(){
+		navigator.notification.alert("Delete successful.",nop);
+	}
+	function deleteFail(){
+		navigator.notification.alert("Error deleting file.",nop);
+	}
+	function nop(){
+		// In "real life" you'd probably want something here. 
+	}
+	</script>
+</body>
 </html>
 
