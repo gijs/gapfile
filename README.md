@@ -1,7 +1,7 @@
 gapfile
 =======
 
-Gapfile is a set of convenience wrapper functions for the file API in PhoneGap/Apache Cordova. It lets you use single (and simple) functions for file reads, writes, directory listings, etc. avoiding the callback hell. The downside is that the error reporting is less fine-grained (you'll basically just get a single error callback if something goes wrong).
+Gapfile is a set of convenience wrapper functions for the file API in PhoneGap/Apache Cordova. It lets you use single (and simple) function calls for file reads, writes, directory listings, etc. avoiding the callback hell. The downside is that the error reporting is less fine-grained (you'll basically just get a single error callback if something goes wrong).
 
 ##Files included
 

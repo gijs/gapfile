@@ -171,6 +171,24 @@ var gapFile = {
 			},fail);       
 	},
 	
+	
+	mkDirectory: function(dirName,success,fail){
+		window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, 
+			function(fileSystem){
+		        fileSystem.root.getDirectory(dirName, {create: true, exclusive: false}, success, fail);
+			},fail);
+	},
+	
+	rmDirectory: function(dirName,success,fail){
+		window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, 
+			function(fileSystem){
+		        fileSystem.root.getDirectory(dirName, {create: false, exclusive: false}, 
+						function(dirEntry){
+							dirEntry.remove(success,fail);
+						},fail);
+				},fail)
+	},
+
 	fileExists: function(fullpath,success,fail){
 		var dirName = this.extractDirectory(fullpath);
 		var fileName = this.extractFilename(fullpath);
