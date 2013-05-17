@@ -5,23 +5,24 @@ Gapfile is a set of convenience wrapper functions for the file API in PhoneGap/A
 
 ##Files included
 
-gapfile.js  -- the JavaScript object that implements all gapfile functions.
-index.html -- a basic PhoneGap index.html that for testing gapfile.js.
-README.md -- this document
-NOTICE -- Apache 2.0 license information (the same as PhoneGap/Cordova itself).
+* gapfile.js  -- the JavaScript object that implements all gapfile functions.
+* index.html -- a basic PhoneGap index.html for testing gapfile.js.
+* README.md -- this document
+* NOTICE -- Apache 2.0 license information (the same as PhoneGap/Cordova itself).
+
 
 ##Potential gotchas
 
 * This has been tested with Apache/Cordova 2.7.0. While it should work with later versions, it may not work with earlier ones.
 * Not all devices support access to the file system (at least through PhoneGap), though most of the "majors" do.
-* Not all devices use the same directory structure. iOS creates a separate and isolated root directory for each app (which can be accessed at "/"), while Android wants you to write in the /sdcard/ directory. I speculate that the other platforms that support file I/O (Blackberry, Windows Phone x.x, etc.) also vary in this respect, but I don't own any of them and have been unable to test it. Reports welcome -- if you can tell me the location of the logical and permitted place for users to write files on your platform, I'll add it to the docs and the test code.
+* Not all devices use the same directory structure. iOS creates a separate and isolated root directory for each app (which can be accessed at /), while Android wants you to write in the /sdcard/ directory. I speculate that the other platforms that support file I/O (Blackberry, Windows Phone x.x, etc.) also vary in this respect, but I don't own any of them and have been unable to test it. Reports welcome -- if you can tell me the location of the logical and permitted place for users to write files on your platform, I'll add it to the docs and the test code.
 * As can perhaps be inferred from the previous point, the code *has not been tested on anything other than iOS and Android*. It's been tested on iPhone, iPad, and a couple of Android devices (a cheap Huawei Ideos phone and an Amazon Kindle Fire). However, if the PhoneGap File API is fully implemented for your device, gapfile should also work (presuming you set the proper folder -- see previous point). Please file a bug report if you run across any exceptions.
-* Don't forget to set up your configuration file to grant file access permissions. Otherwise your app won't be able to write files on most platforms. See the [PhoneGap File API docs](http://docs.phonegap.com/en/2.7.0/cordova_file_file.md.html#Files) for details.
+* Don't forget to set up your PhoneGap configuration file(s) to grant file access permissions. Otherwise your app won't be able to write files on most platforms. See the [PhoneGap File API docs](http://docs.phonegap.com/en/2.7.0/cordova_file_file.md.html#Files) for details.
 * If you want to transfer files via iTunes on iOS, you'll also need to set "Application supports iTunes file sharing" to "YES" in your (appname)-Info.plist file (under the yellow Resources folder in Xcode).
 
 ##Running the tests
 
-Create a new PhoneGap/Cordova project, replace the generated index.html with the test index.html from gapfile, and drop in the gapfile.js file. Build and run as normal. You may want to test the error handling by (e.g.) writing a file, deleting it, then attempting to read it. 
+Create a new PhoneGap/Cordova project, replace the generated index.html with the index.html from gapfile, and drop in the gapfile.js file. Build and run as normal. You may want to test the error handling by (e.g.) writing a file, deleting it, then attempting to read it. 
 
 ##Public API
 
@@ -36,7 +37,8 @@ Write data to a file.
 Parameters: 
 
  fullpath: full path including file name (if no path portion is given, assumes /).
-     Examples: test.txt /test.txt /some/folder/test.txt (note that iOS doesn't allow subdirectories at this time).
+
+	Examples: test.txt /test.txt /some/folder/test.txt (note that iOS doesn't allow subdirectories at this time).
 
  data: the data to write.
 
