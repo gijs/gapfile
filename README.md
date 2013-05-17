@@ -8,7 +8,7 @@ Gapfile is a set of convenience wrapper functions for the file API in PhoneGap/A
 gapfile.js  -- the JavaScript object that implements all gapfile functions.
 index.html -- a basic PhoneGap index.html that for testing gapfile.js.
 README.md -- this document
-LICENSE -- Apache 2.0 license (the same as PhoneGap/Cordova itself).
+NOTICE -- Apache 2.0 license information (the same as PhoneGap/Cordova itself).
 
 ##Potential gotchas
 

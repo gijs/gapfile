@@ -1,8 +1,10 @@
 /* 
 * File system wrappers for Phonegap/Apache Cordova
-* Copyright 2013 by Anthony W. Hursh, tony.hursh@gmail.com
+* by Anthony W. Hursh, tony.hursh@gmail.com
+* Copyright 2013 by Contraterrene eLearning Group, LLC
 * Made available under the terms of the Apache 2.0 license
-* (same license as Phonegap itself).
+* (the same license as Phonegap/Cordova itself). See the NOTICE
+* file for details.
 *
 * Public API:
 *
