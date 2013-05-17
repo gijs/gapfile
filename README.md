@@ -30,7 +30,7 @@ Below are gapfile's public API functions with a brief summary of their use. See 
 
 Unless an extremely good reason presents itself, these should remain stable in any future versions of gapfile. Note that gapfile also has some other functions that aren't mentioned here. Those are intended for internal use only. Use them at your own risk; there's no guarantee that they will remain the same across releases.
 
-**writeFile(*fullpath*, *data*, *success*, *fail*)**
+**writeFile(***fullpath*, *data*, *success*, *fail***)**
 
 Write data to a file.
 
@@ -47,12 +47,12 @@ Parameters:
  fail: callback function if error occurs.
 
 
-**appendFile(*fullpath*, *data*, *success*, *fail*)**
+**appendFile(***fullpath*, *data*, *success*, *fail***)**
 
 Identical to writeFile, except appends the data to an existing file.
 
 
-**readFile(*fullpath*, *asText*, *success*, *fail*)**
+**readFile(***fullpath*, *asText*, *success*, *fail***)**
 
 Read data from a file.
 
@@ -69,7 +69,7 @@ Parameters:
  fail: callback function if error occurs.
 
 
-**deleteFile(*fullpath*, *success*, *fail*)**
+**deleteFile(***fullpath*, *success*, *fail***)**
 
 Delete a file
 
@@ -84,7 +84,7 @@ Parameters:
  fail: callback function if error occurs.
 
 
-**readDirectory(*dirname*, *success*, *fail*)**
+**readDirectory(***dirname*, *success*, *fail***)**
 
 Get a list of the files in a directory.
 
@@ -97,7 +97,7 @@ Parameters:
  fail: callback function if error occurs.
 
 
-**fileExists(*fullpath*, *callback*, *fail*)**
+**fileExists(***fullpath*, *callback*, *fail***)**
 
 Check for file existence.
 
