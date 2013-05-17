@@ -31,7 +31,6 @@
             <button onclick="testRead();">Test file read</button>
             <button onclick="testDirectory();">Test directory</button>
             <button onclick="testExists();">Test file existence</button>
-            <button onclick="testRootDir();">Display root directory</button>
             <button onclick="testDataURI();">Test data URI</button>
             <button onclick="testAppend();">Test append</button>
             <button onclick="testDelete();">Test file delete</button>
@@ -78,17 +77,12 @@
                 gapFile.readDirectory(userdir,displayDirectory,dirFail);
             }
             
-            function testRootDir(){
-                gapFile.getRootDir(rootDirSuccess,rootDirFail);
-            }
-            
             function testDataURI(){
                 // If the second parameter is false, return data URI rather
                 // than file contents.
                 gapFile.readFile(userdir + userfilename,false,dataURIDone,dataURIFail);
             }
             
-           
             function dataURIDone(uri){
                 navigator.notification.alert("Data URI is: " + uri,nop);
             }
@@ -97,12 +91,6 @@
                 navigator.notification.alert("Failed to retrieve data URI",nop);
             }
             
-            function rootDirSuccess(dirname){
-                navigator.notification.alert("Root directory is: " + dirname,nop);
-            }
-            function rootDirFail(){
-                navigator.notification.alert("Can't get root directory",nop);
-            }
             function displayDirectory(dirarr){
                 navigator.notification.alert(JSON.stringify(dirarr),nop);
             }

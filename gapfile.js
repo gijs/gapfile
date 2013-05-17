@@ -49,12 +49,6 @@
 *  success: callback function, called with an array of file names from the directory.
 *  fail: callback function if error occurs.
 *
-* getRootDir(success, fail)
-* Returns the full path to the root directory for the app.
-* Parameters: 
-*  success: callback function, called with the path.
-*  fail: callback function if error occurs.
-*
 * fileExists(fullpath, callback, faile)
 * Check for file existence.
 * Parameters: 
@@ -88,14 +82,6 @@ var gapFile = {
 		var filename =  path.substring(lastSlash + 1);
 		return filename;
 	},
-
-	getRootDir: function(success,fail){
-		window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, 
-			function(fileSystem){
-				success(fileSystem.root.fullPath);
-			},
-			fail)
-		},
 
 	appendFile: function(fullpath,data,success,fail){
 		this.llWriteFile(fullpath,data,success,fail,true);
