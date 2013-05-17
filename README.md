@@ -30,82 +30,82 @@ Below are gapfile's public API functions with a brief summary of their use. See 
 
 Unless an extremely good reason presents itself, these should remain stable in any future versions of gapfile. Note that gapfile also has some other functions that aren't mentioned here. Those are intended for internal use only. Use them at your own risk; there's no guarantee that they will remain the same across releases.
 
-*writeFile(fullpath, data, success, fail)*
+**writeFile(fullpath, data, success, fail)**
 
 Write data to a file.
 
 Parameters: 
 
- fullpath: full path including file name (if no path portion is given, assumes /).
+ *fullpath*: full path including file name (if no path portion is given, assumes /).
 
 	Examples: test.txt /test.txt /some/folder/test.txt (note that iOS doesn't allow subdirectories at this time).
 
- data: the data to write.
+ *data*: the data to write.
 
- success: callback function on successful write.
+ *success*: callback function on successful write.
 
- fail: callback function if error occurs.
+ *fail*: callback function if error occurs.
 
 
-*appendFile(fullpath, data, success, fail)*
+**appendFile(fullpath, data, success, fail)**
 
 Identical to writeFile, except appends the data to an existing file.
 
 
-*readFile(fullpath, asText, success, fail)*
+**readFile(fullpath, asText, success, fail)**
 
 Read data from a file.
 
 Parameters: 
 
- fullpath: full path including file name (if no path portion is given, assumes /).
+ *fullpath*: full path including file name (if no path portion is given, assumes /).
 
      Examples: test.txt /test.txt /some/folder/test.txt (note that iOS doesn't allow subdirectories at this time).
 
- asText: boolean specifying whether to read as text or a data URI. If true, calls success with the text as the parameter. If false, calls success with the data URI as the parameter.
+ *asText*: boolean specifying whether to read as text or a data URI. If true, calls success with the text as the parameter. If false, calls success with the data URI as the parameter.
 
- success: callback function on successful read.
+ *success*: callback function on successful read.
 
- fail: callback function if error occurs.
+ *fail*: callback function if error occurs.
 
 
-*deleteFile(fullpath, success, fail)*
+**deleteFile(fullpath, success, fail)**
 
-Delete a file
+Delete a file.
 
 Parameters: 
 
- fullpath: full path of file to delete, including file name (if no path portion is given, assumes /).
+ *fullpath*: full path of file to delete, including file name (if no path portion is given, assumes /).
 
      Examples: test.txt /test.txt /some/folder/test.txt (note that iOS doesn't allow subdirectories at this time).
 
- success: callback function on successful delete.
+ *success*: callback function on successful delete.
 
- fail: callback function if error occurs.
+ *fail*: callback function if error occurs.
 
 
-*readDirectory(dirname, success, fail)*
+**readDirectory(dirname, success, fail)**
 
 Get a list of the files in a directory.
 
 Parameters:
 
- dirname: full path to directory
+ *dirname*: full path to directory
 
- success: callback function, called with an array of file names from the directory.
+ *success*: callback function, called with an array of file names from the directory.
 
- fail: callback function if error occurs.
+ *fail*: callback function if error occurs.
 
 
-*fileExists(fullpath, callback, fail)*
+**fileExists(fullpath, callback, fail)**
 
 Check for file existence.
 
 Parameters:
 
- fullpath: full path of name to check
+ *fullpath*: full path of name to check
 
- success: called with true if file is found, false if file is not found.
+ *success*: called with true if file is found, false if file is not found.
 
- fail: callback function if error occurs.
+ *fail*: callback function if error occurs.
 
