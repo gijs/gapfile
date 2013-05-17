@@ -55,6 +55,20 @@
 *  success: called with true if file is found, false if file is not found.
 *  fail: callback function if error occurs.
 *
+* mkDirectory(dirName, success, fail)
+* Create a subdirectory.
+* Parameters: 
+*  dirName: full path to directory
+*  success: callback function for successful create.
+*  fail: callback function if error occurs.
+*
+* rmDirectory(dirName, success, fail)
+* Delete a subdirectory.
+* Parameters: 
+*  dirName: full path to directory
+*  success: callback function for successful delete.
+*  fail: callback function if error occurs.
+*
 */
 
 var gapFile = {

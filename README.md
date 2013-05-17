@@ -97,6 +97,29 @@ Parameters:
  *fail*: callback function if error occurs.
 
 
+**mkDirectory(dirName, success, fail)**
+
+Create a subdirectory.
+
+Parameters: 
+
+ *dirName*: full path to directory
+
+ *success*: callback function for successful create.
+
+ *fail*: callback function if error occurs.
+
+
+**rmDirectory(dirName, success, fail)**
+
+Delete a subdirectory.
+
+Parameters: 
+ *dirName*: full path to directory
+ *success*: callback function for successful delete.
+ *fail*: callback function if error occurs.
+
+
 **fileExists(fullpath, callback, fail)**
 
 Check for file existence.
