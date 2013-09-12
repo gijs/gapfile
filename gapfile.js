@@ -14,7 +14,7 @@
 *  fullpath: full path including file name (if no path portion is given, assumes /).
 *      Examples: test.txt /test.txt /some/folder/test.txt
 *  data: the data to write.
-*  success: callback function on successful write.
+*  success: callback function on successful write. Called with the file URL as parameter.
 *  fail: callback function if error occurs.
 *
 *
@@ -71,6 +71,9 @@
 *
 */
 
+
+/* Changelog:  writeFile now returns the File URL on successful write. */
+
 var gapFile = {
 		extractDirectory: function(path){
 		var dirPath;
@@ -111,10 +114,11 @@ var gapFile = {
 				function(dirEntry){
 					dirEntry.getFile(gapFile.extractFilename(fullpath), {create: true}, 
 					function(fileEntry){
+							var fileURL = fileEntry.toURL();
 							fileEntry.createWriter(
 								function(writer){
 									writer.onwrite = function(evt){
-										success();
+										success(fileURL);
 									};
 									writer.onerror = function(evt){ 
 										fail(evt.target.error);

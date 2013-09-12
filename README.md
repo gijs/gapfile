@@ -42,7 +42,7 @@ Parameters:
 
  *data*: the data to write.
 
- *success*: callback function on successful write.
+ *success*: callback function on successful write. Called with the file URL as the sole parameter. CAVEAT: if you are using a version of PhoneGap prior to 1.8, you will need to change toURL() to toURI() in the code for llWriteFile. This method was renamed in 1.8. While toURI still exists as of 3.0, it is deprecated, so this code uses the new toURL() method. Other than the name, they appear to be functionally identical.
 
  *fail*: callback function if error occurs.
 

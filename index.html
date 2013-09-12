@@ -131,8 +131,8 @@ limitations under the License.
 		navigator.notification.alert("Error reading directory.",nop);
 	}
 
-	function writeDone(){
-		navigator.notification.alert("Write successful.",nop);
+	function writeDone(fileuri){
+		navigator.notification.alert("Write successful. File is: " + fileuri,nop);
 	}
 	function writeFail(){
 		navigator.notification.alert("Error writing file",nop);
