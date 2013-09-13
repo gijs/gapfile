@@ -13,7 +13,7 @@ Gapfile is a set of convenience wrapper functions for the file API in PhoneGap/A
 
 ##Potential gotchas
 
-* This has been tested with Phonegap/Cordova 2.7.0 and 3.0.x While it should work with later versions, it may not work with earlier ones.
+* This has been tested with Phonegap/Cordova 2.7.0 and 3.0.x. While it should work with later versions, it may not work with earlier ones.
 * Not all devices support access to the file system (at least through PhoneGap), though most of the "majors" do.
 * Not all devices use the same directory structure. iOS creates a separate and isolated root directory for each app (which can be accessed at /), while Android wants you to write in the /sdcard/ directory. I speculate that the other platforms that support file I/O (Blackberry, Windows Phone x.x, etc.) also vary in this respect, but I don't own any of them and have been unable to test it. Reports welcome -- if you can tell me the location of the logical and permitted place for users to write files on your platform, I'll add it to the docs and the test code.
 * As can perhaps be inferred from the previous point, the code *has not been tested on anything other than iOS and Android*. It's been tested on iPhone, iPad, and a couple of Android devices (a cheap Huawei Ideos phone and an Amazon Kindle Fire). However, if the PhoneGap File API is fully implemented for your device, gapfile should also work (presuming you set the proper folder -- see previous point). Please file a bug report if you run across any exceptions.
