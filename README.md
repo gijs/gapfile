@@ -32,7 +32,7 @@ Remove with:
 
 cordova plugin remove com.contraterrene.GapFile
 
-If you are using an earlier version, just add the www/gapfile.js to your project and include the script in your index.html file.
+If you are using an earlier version, just add the www/gapfile.js file to your project and include the script in your index.html file.
 
 ##Potential gotchas
 
