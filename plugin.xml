@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="com.contraterrene.GapFile"
+    version="1.1.0">
+	<engines>
+	    <engine name="cordova" version=">=3.0.0" />
+	</engines>
+	<name>GapFile</name>
+	<description>GapFile provides a set of convenience wrapper functions for the Cordova file API.</description>
+	<keywords>file,read, write, append,directory</keywords>
+	<license>Apache 2.0 License</license>
+	<js-module src="www/gapfile.js" name="GapFile">
+		<clobbers target="GapFile" />
+	</js-module>
+</plugin>

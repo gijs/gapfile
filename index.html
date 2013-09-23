@@ -23,6 +23,10 @@ limitations under the License.
 	<title>Test driver for gapfile.js</title>
 </head>
 <body>
+	<div>&nbsp</div>  <!-- get past annoying status bar in iOS 7 -->
+	<div>&nbsp</div>
+	<div>&nbsp</div>
+	
 	<div>
 		<button onclick="testWrite();">Write file</button>
 		<button onclick="testRead();">Read file</button>
@@ -36,8 +40,7 @@ limitations under the License.
 		<button onclick="testDeleteSubdirectory();">Delete file in subdirectory</button>
 		<button onclick="testDirectoryDelete();">Delete subdirectory</button>
 	</div>
-	<script type="text/javascript" src="cordova-2.7.0.js"></script>
-	<script type="text/javascript" src="gapfile.js"></script>
+	<script type="text/javascript" src="phonegap.js"></script>
 	<script type="text/javascript">
 	var userfilename = "gftest.txt";
 	var usersubfilename = "gfsubdirtest.txt";
@@ -55,50 +58,50 @@ limitations under the License.
 	}
 
 	function testWrite(){
-		gapFile.writeFile(userdir + userfilename,"Hello, world!\n",writeDone,writeFail);
+		GapFile.writeFile(userdir + userfilename,"Hello, world!\n",writeDone,writeFail);
 	}
 
 	function testWriteSubdirectory(){
-		gapFile.writeFile(userdir + usersubdir + "/" + usersubfilename,"Hello, subdirectory!\n",writeDone,writeFail);
+		GapFile.writeFile(userdir + usersubdir + "/" + usersubfilename,"Hello, subdirectory!\n",writeDone,writeFail);
 	}
 
 	function testDeleteSubdirectory(){
-		gapFile.deleteFile(userdir +  usersubdir + "/" + usersubfilename,deleteDone,deleteFail);
+		GapFile.deleteFile(userdir +  usersubdir + "/" + usersubfilename,deleteDone,deleteFail);
 	}
 	function testRead(){
 		// If the second parameter is true, return file contents rather
 		// than data URI.
-		gapFile.readFile(userdir + userfilename,true,readDone,readFail);
+		GapFile.readFile(userdir + userfilename,true,readDone,readFail);
 	}
 
 	function testAppend(){
-		gapFile.appendFile(userdir + userfilename,"MOAR TEXT FOR THE WRITING!\n",appendDone,appendFail);
+		GapFile.appendFile(userdir + userfilename,"MOAR TEXT FOR THE WRITING!\n",appendDone,appendFail);
 	}
 
 	function testDelete(){
-		gapFile.deleteFile(userdir + userfilename,deleteDone,deleteFail);
+		GapFile.deleteFile(userdir + userfilename,deleteDone,deleteFail);
 	}
 
 	function testExists(){
-		gapFile.fileExists(userdir + userfilename,existsDone,existsFail);
+		GapFile.fileExists(userdir + userfilename,existsDone,existsFail);
 	}
 
 	function testDirectory(){
-		gapFile.readDirectory(userdir,displayDirectory,dirFail);
+		GapFile.readDirectory(userdir,displayDirectory,dirFail);
 	}
 
 	function testDataURI(){
 		// If the second parameter is false, return data URI rather
 		// than file contents.
-		gapFile.readFile(userdir + userfilename,false,dataURIDone,dataURIFail);
+		GapFile.readFile(userdir + userfilename,false,dataURIDone,dataURIFail);
 	}
 
 	function testDirectoryCreate(){
-		gapFile.mkDirectory(userdir + usersubdir,mkDirectoryDone,mkDirectoryFail);
+		GapFile.mkDirectory(userdir + usersubdir,mkDirectoryDone,mkDirectoryFail);
 	}
 
 	function testDirectoryDelete(){
-		gapFile.rmDirectory(userdir + usersubdir,rmDirectoryDone,rmDirectoryFail);
+		GapFile.rmDirectory(userdir + usersubdir,rmDirectoryDone,rmDirectoryFail);
 	}
 
 

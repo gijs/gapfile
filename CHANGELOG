@@ -1,0 +1,18 @@
+Changes in 1.1:
+
+Repackaged as Cordova/PhoneGap 3.0-compatible plugin.
+
+The gapFile object has been renamed GapFile to be consistent with usage in other plugins.
+
+Internal docs in gapfile.js have been removed.
+
+Changes from first (unversioned) release:
+
+Changed deprecated toURI() call to toURL(). You will need to change this back if you're using a version of PhoneGap prior to 1.8.
+
+GapFile.writeFile returns the full file URL to the success callback for added convenience.
+
+
+
+
+
