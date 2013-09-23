@@ -3,6 +3,8 @@ GapFile
 
 Gapfile is a set of convenience wrapper functions for the file API in PhoneGap/Apache Cordova. It lets you use single (and simple) function calls for file reads, writes, directory listings, etc. avoiding the callback hell. The downside is that the error reporting is less fine-grained (you'll basically just get a single error callback if something goes wrong).
 
+GapFile was written by [Tony Hursh](http://people.phonegap.com/developer/anthony-hursh/). I'm currently available for remote contract work.
+
 ## Recent (significant) changes
 
 Repackaged as 3.0-compatible plugin.
