@@ -21,35 +21,17 @@ limitations under the License.
 	<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
 	<link rel="stylesheet" type="text/css" href="css/index.css" />
 	<title>Test driver for gapfile.js</title>
-</head>
-<body>
-	<div>&nbsp</div>  <!-- get past annoying status bar in iOS 7 -->
-	<div>&nbsp</div>
-	<div>&nbsp</div>
-	
-	<div>
-		<button onclick="testWrite();">Write file</button>
-		<button onclick="testRead();">Read file</button>
-		<button onclick="testDataURI();">Read file as data URI</button>
-		<button onclick="testDirectory();">Read directory</button>
-		<button onclick="testExists();">Test file existence</button>
-		<button onclick="testAppend();">Append to file</button>
-		<button onclick="testDelete();">Delete file</button>
-		<button onclick="testDirectoryCreate();">Create subdirectory</button>
-		<button onclick="testWriteSubdirectory();">Write file in subdirectory</button>
-		<button onclick="testDeleteSubdirectory();">Delete file in subdirectory</button>
-		<button onclick="testDirectoryDelete();">Delete subdirectory</button>
-	</div>
 	<script type="text/javascript" src="phonegap.js"></script>
 	<script type="text/javascript">
 	var userfilename = "gftest.txt";
 	var usersubfilename = "gfsubdirtest.txt";
 	var userdir = "/"; // Default for iOS
 	var usersubdir = "gftestdir";
-	document.addEventListener('deviceready', onDeviceReady, false);
-
+	function onLoad() {
+        document.addEventListener("deviceready", onDeviceReady, false);
+    }
 	function onDeviceReady(){
-		if(device.platform == "Android"){
+		if(device.platform === "Android"){
 			userdir = "/sdcard/"; // Can't write to root on Android.
 		}
 		// Insert code here to set proper directory for devices other than iOS or Android.
@@ -57,7 +39,7 @@ limitations under the License.
 
 	}
 
-	function testWrite(){
+	function testWrite(){ 
 		GapFile.writeFile(userdir + userfilename,"Hello, world!\n",writeDone,writeFail);
 	}
 
@@ -74,7 +56,7 @@ limitations under the License.
 		GapFile.readFile(userdir + userfilename,true,readDone,readFail);
 	}
 
-	function testAppend(){
+	function testAppend(){ // You can call this repeatedly, then do testRead after each.
 		GapFile.appendFile(userdir + userfilename,"MOAR TEXT FOR THE WRITING!\n",appendDone,appendFail);
 	}
 
@@ -170,6 +152,26 @@ limitations under the License.
 		// In "real life" you'd probably want something here. 
 	}
 	</script>
+</head>
+<body onload="onLoad()">
+	<div>&nbsp</div>  <!-- get past annoying status bar in iOS 7 -->
+	<div>&nbsp</div>
+	<div>&nbsp</div>
+	
+	<div>
+		<button onclick="testWrite();">Write file</button>
+		<button onclick="testRead();">Read file</button>
+		<button onclick="testDataURI();">Read file as data URI</button>
+		<button onclick="testDirectory();">Read directory</button>
+		<button onclick="testExists();">Test file existence</button>
+		<button onclick="testAppend();">Append to file</button>
+		<button onclick="testDelete();">Delete file</button>
+		<button onclick="testDirectoryCreate();">Create subdirectory</button>
+		<button onclick="testWriteSubdirectory();">Write file in subdirectory</button>
+		<button onclick="testDeleteSubdirectory();">Delete file in subdirectory</button>
+		<button onclick="testDirectoryDelete();">Delete subdirectory</button>
+	</div>
+	
 </body>
 </html>
 
