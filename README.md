@@ -32,7 +32,17 @@ Remove with:
 
 cordova plugin remove com.contraterrene.GapFile
 
-If you are using an earlier version, just add the www/gapfile.js file to your project and include the script in your index.html file.
+You will also need the base Cordova File plugin:
+
+cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-file.git
+
+For the test index file (and probably your own stuff) you'll need:
+
+cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-device.git
+
+so that the deviceready event fires correctly.
+
+If you are using an earlier version, just add the www/gapfile.js file to your project and include the script in your index.html file. Also, earlier versions will typically need to have file access enabled in the configuration file(s) for the project. See the documentation for your particular device/version of PhoneGap.
 
 ##Potential gotchas
 
@@ -40,12 +50,11 @@ If you are using an earlier version, just add the www/gapfile.js file to your pr
 * Not all devices support access to the file system (at least through PhoneGap), though most of the "majors" do.
 * Not all devices use the same directory structure. iOS creates a separate and isolated root directory for each app (which can be accessed at /), while Android wants you to write in the /sdcard/ directory. I speculate that the other platforms that support file I/O (Blackberry, Windows Phone x.x, etc.) also vary in this respect, but I don't own any of them and have been unable to test it. Reports welcome -- if you can tell me the location of the logical and permitted place for users to write files on your platform, I'll add it to the docs and the test code.
 * As can perhaps be inferred from the previous point, the code *has not been tested on anything other than iOS and Android*. It's been tested on iPhone, iPad, and a couple of Android devices (a cheap Huawei Ideos phone and an Amazon Kindle Fire). However, if the PhoneGap File API is fully implemented for your device, GapFile should also work (presuming you set the proper folder -- see previous point). Please file a bug report if you run across any exceptions.
-* Don't forget to install the file plugin for 3.0 and above (or set up your PhoneGap configuration file(s) to grant file access permissions for earlier versions). Otherwise your app won't be able to write files on most platforms. See the [PhoneGap File API docs](http://docs.phonegap.com/en/3.0.0/cordova_file_file.md.html) for details.
 * If you want to transfer files via iTunes on iOS, you'll also need to set "Application supports iTunes file sharing" to "YES" in your (appname)-Info.plist file (under the yellow Resources folder in Xcode).
 
 ##Running the tests
 
-Create a new PhoneGap/Cordova project, install the plugin (or manually add gapfile.js for pre-3.0 versions), and replace the generated index.html with the index.html from this project. Build and run as normal. You may want to test the error handling by (e.g.) writing a file, deleting it, then attempting to read it. 
+Create a new PhoneGap/Cordova project, install the plugins (or manually add gapfile.js and enable file access in the config for pre-3.0 versions), and replace the generated index.html with the index.html from this project. Build and run as normal. You may want to test the error handling by (e.g.) writing a file, deleting it, then attempting to read it. 
 
 ##Public API
 
