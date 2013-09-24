@@ -11,7 +11,7 @@ Repackaged as 3.0-compatible plugin.
 
 The gapFile object has been renamed GapFile to be more consistent with other plugins.
 
-As a convenience, GapFile.writeFile now provides the file URL to the success callback.
+As a convenience, GapFile.writeFile now calls success callback with the file's URL as a parameter (e.g., writing /test.txt will send file://(some horrifically ugly platform-dependent path)/test.txt to the success callback).
 
 ## Files included
 
@@ -36,7 +36,7 @@ You will also need the base Cordova File plugin:
 
 cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-file.git
 
-For the test index file (and probably your own stuff) you'll need:
+If you want to run the test index file (and probably for your own stuff) you'll need:
 
 cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-device.git
 
